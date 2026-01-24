@@ -1,5 +1,9 @@
+import bfs.BfsTraversal;
+import bfs.ShortestDistance;
+import bfs.ShortestDistancePath;
+
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.HashMap;
 
 class Graph {
     int vertices;
@@ -31,7 +35,10 @@ class Graph {
 }
 
 public class Main {
+
     public static void main(String[] args) {
+
+        HashMap<String, String> map = new HashMap<>();
 
         Graph g = new Graph(6);
 
@@ -44,5 +51,19 @@ public class Main {
         g.addEdge(3, 5, false);
 
         g.printGraph();
+
+        BfsTraversal bfsTraversal = new BfsTraversal();
+        bfsTraversal.bfs(g.adjList, 0);
+        System.out.println();
+
+        ShortestDistance shortestDistance = new ShortestDistance();
+        shortestDistance.shortestDistance(g.adjList, 0, 5);
+        System.out.println();
+
+        ShortestDistancePath shortestDistancePath = new ShortestDistancePath();
+        shortestDistancePath.shortestDistancePath(g.adjList, 2, 3);
+        System.out.println();
+
+
     }
 }
