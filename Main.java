@@ -1,6 +1,8 @@
 import bfs.BfsTraversal;
 import bfs.ShortestDistance;
 import bfs.ShortestDistancePath;
+import cycleDetection.CycleDetection;
+import dfs.DfsTraversal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +54,11 @@ public class Main {
 
         g.printGraph();
 
+        Graph cyclicUndirectedGraph = new Graph(3);
+        cyclicUndirectedGraph.addEdge(0, 1, false);
+        cyclicUndirectedGraph.addEdge(0, 2, false);
+        cyclicUndirectedGraph.addEdge(1, 2, false);
+
         BfsTraversal bfsTraversal = new BfsTraversal();
         bfsTraversal.bfs(g.adjList, 0);
         System.out.println();
@@ -64,6 +71,13 @@ public class Main {
         shortestDistancePath.shortestDistancePath(g.adjList, 2, 3);
         System.out.println();
 
+        DfsTraversal dfsTraversal = new DfsTraversal();
+        dfsTraversal.dfs(g.adjList, 0);
+        System.out.println();
+
+        CycleDetection cycleDetection = new CycleDetection();
+        cycleDetection.detectCycleInUndirectedGraphDfs(cyclicUndirectedGraph.adjList, 0);
+        System.out.println();
 
     }
 }
