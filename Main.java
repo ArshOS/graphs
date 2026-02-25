@@ -59,6 +59,11 @@ public class Main {
         cyclicUndirectedGraph.addEdge(0, 2, false);
         cyclicUndirectedGraph.addEdge(1, 2, false);
 
+        Graph cyclicDirectedGraph = new Graph(3);
+        cyclicDirectedGraph.addEdge(0, 1, true);
+        cyclicDirectedGraph.addEdge(1, 2, true);
+        cyclicDirectedGraph.addEdge(2, 0, true);
+
         BfsTraversal bfsTraversal = new BfsTraversal();
         bfsTraversal.bfs(g.adjList, 0);
         System.out.println();
@@ -79,5 +84,7 @@ public class Main {
         cycleDetection.detectCycleInUndirectedGraphDfs(cyclicUndirectedGraph.adjList, 0);
         System.out.println();
 
+        cycleDetection.detectCycleInDirectedGraphDfs(cyclicDirectedGraph.adjList, 0);
+        System.out.println();
     }
 }
